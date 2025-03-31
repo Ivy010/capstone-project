@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
+import { WorkoutContext } from "./WorkoutContext";
 
 const WorkoutLog = () => {
     const [workouts, setWorkouts] = useState([]);
-    const [formData, setFormData] = useState({ name: '', duration: '', day: ''});
+    const [inputs, setInputs] = useState({});
     const [dailyWorkout, setDailyWorkout] = useState(null);
     const [date, setDate] = useState(new Date().toLocaleDateString());
+    const { addWorkout } = useContext(WorkoutContext);
+
+
 
     useEffect(() => {
         const fetchWorkouts = async () => {
@@ -21,16 +25,19 @@ const WorkoutLog = () => {
             fetchWorkouts();
         }, []);
         
-        const handleInputChange = (e) => {
-            const {name, value} = e.target;
-            setFormData({ ...formData, [name]: value });
-        };
+
+        const handleChange = (event) => {
+            const name = event.target.name;
+            const value = event.target.value;
+            setInputs(values => ({...values, [name]: value}))
+          }
 
         const handleFormSubmit = (e) => {
             e.preventDefault();
-            setDailyWorkout(formData);
-            setFormData({ name: '', duration: '', day: ''});
-        };
+            addWorkout(inputs);
+            setDailyWorkout(inputs);
+            setInputs({ name: '', duration: '', day: ''});
+     };
 
     return (
         <div>
@@ -44,33 +51,33 @@ const WorkoutLog = () => {
             <section>
             <h2>Log Your Workouts</h2>  
             <form onSubmit={handleFormSubmit}>
-                <label htmlFor= "workoutName">Workout Name</label>
+                <label>Workout Name</label>
                 <input
                  type="text"
-                 id="workoutName"
-                 value={formData.name}
-                 onChange={handleInputChange}
+                 name="name"
+                 value={inputs.name || ""}
+                 onChange={handleChange}
                  placeholder="Workout Name"
                 />
 
-                <label htmlFor= "duration"> Duration</label>
+                <label> Duration</label>
                 <input
                  type="number"
-                 id="duration"
-                 value={formData.duration}
-                 onChange={handleInputChange}
+                 name="duration"
+                 value={inputs.duration}
+                 onChange={handleChange}
                  placeholder="Duration (mins)"
                 />
 
-                <label htmlFor= "day">Day of Week</label>
+                <label>Day of Week</label>
                 <input
                  type="text"
-                 id="day"
-                 value={formData.day}
-                 onChange={handleInputChange}
+                 name="day"
+                 value={inputs.day}
+                 onChange={handleChange}
                  placeholder="Day of Week"
                 />
-                <button type="submit">Submit</button>
+                <button type="submit">Log Workout</button>
             </form>
 
             </section>

@@ -6,6 +6,14 @@ import WorkoutHistory from './components/WorkoutHistory';
 import ProgressChart from './components/ProgressChart';
 
 function App() {
+
+ // const [workoutHistory, setWorkoutHistory] = useState([]);
+
+  //const addWorkout = (workout) => {
+  //  setWorkoutHistory((prevHistory) => [...prevHistory, workout]);
+  //};
+
+
   return (
     <>
     <Router>
@@ -22,8 +30,10 @@ function App() {
       </Routes>
     </Router>
 
+
+
     </>
-  )
-}
+  );
+};
 
 export default App;
