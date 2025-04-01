@@ -7,32 +7,30 @@ import ProgressChart from './components/ProgressChart';
 
 function App() {
 
- // const [workoutHistory, setWorkoutHistory] = useState([]);
-
-  //const addWorkout = (workout) => {
-  //  setWorkoutHistory((prevHistory) => [...prevHistory, workout]);
-  //};
 
 
   return (
-    <>
+    
     <Router>
-      <nav>
-        <Link to = "/">WorkoutLog</Link>
-        <Link to = "/workoutHistory">WorkoutHistory</Link>
-        <Link to = "/progressChart">ProgressChart</Link>
+      <div className='flex h-screen'>
+        <nav className="w-1/5 bg-gray-800 text-white p-4 flex flex-col">
+          <h1 className="text-xl font-bold mb-8">Fitness Tracker</h1>
+          <Link to = "/" className="mb-4 hover:underline">WorkoutLog</Link>
+          <Link to = "/workoutHistory" className="mb-4hover:underline">WorkoutHistory</Link>
+          <Link to = "/progressChart" className="hover:underline">ProgressChart</Link>
+        </nav>
 
-      </nav>
-      <Routes>
-        <Route path="/" element={<WorkoutLog />} />
-        <Route path="/workoutHistory" element={<WorkoutHistory />} />
-        <Route path="/progressChart" element={<ProgressChart />} />
-      </Routes>
+        <main className="w-4/5 p-8 bg-gray-100">
+          <Routes>
+            <Route path="/" element={<WorkoutLog />} />
+            <Route path="/workoutHistory" element={<WorkoutHistory />} />
+            <Route path="/progressChart" element={<ProgressChart />} />
+          </Routes>
+        </main>
+      </div>
+    
     </Router>
-
-
-
-    </>
+  
   );
 };
 

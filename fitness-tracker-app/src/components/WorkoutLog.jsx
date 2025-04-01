@@ -40,17 +40,19 @@ const WorkoutLog = () => {
      };
 
     return (
-        <div>
+
+
+        <div className="w-4/5 bg-gray-100 p-8">
             <header>
-            <h1>Welcome to Your Fitness Journey!</h1>
-            <p>Track your workouts and progress effortlessly and effectively.</p>
+            <h1 className="text-2xl font-bold text-green-700 mb-4">Welcome to Your Fitness Journey!</h1>
+            <p className="text-gray-700 mb-6">Track your workouts and progress effortlessly and effectively.</p>
             <p>Today's Date: {date}</p>
 
             </header>
 
             <section>
             <h2>Log Your Workouts</h2>  
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit} className="bg-white shadow-md p-6 rounded space-y-4">
                 <label>Workout Name</label>
                 <input
                  type="text"
@@ -58,6 +60,7 @@ const WorkoutLog = () => {
                  value={inputs.name || ""}
                  onChange={handleChange}
                  placeholder="Workout Name"
+                 className="border p-2 rounded w-full"
                 />
 
                 <label> Duration</label>
@@ -67,6 +70,7 @@ const WorkoutLog = () => {
                  value={inputs.duration}
                  onChange={handleChange}
                  placeholder="Duration (mins)"
+                 className="border p-2 rounded w-full"
                 />
 
                 <label>Day of Week</label>
@@ -76,8 +80,15 @@ const WorkoutLog = () => {
                  value={inputs.day}
                  onChange={handleChange}
                  placeholder="Day of Week"
+                 className="border p-2 rounded w-full"
                 />
-                <button type="submit">Log Workout</button>
+
+                <button 
+                type="submit"
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+                >
+                Log Workout
+                </button>
             </form>
 
             </section>
@@ -108,6 +119,7 @@ const WorkoutLog = () => {
 
       
         </div>
+        
     );
 };
 
