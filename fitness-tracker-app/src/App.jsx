@@ -14,9 +14,9 @@ function App() {
     <Router>
       <div className='flex h-screen'>
         <nav className="w-1/5 bg-gray-800 text-white p-4 flex flex-col">
-          <h1 className="text-xl font-bold mb-8">Fitness Tracker</h1>
+          <h1 className="text-xl font-bold mb-8 text-green-600">Fitness Tracker</h1>
           <Link to = "/" className="mb-4 hover:underline">WorkoutLog</Link>
-          <Link to = "/workoutHistory" className="mb-4hover:underline">WorkoutHistory</Link>
+          <Link to = "/workoutHistory" className="mb-4 hover:underline">WorkoutHistory</Link>
           <Link to = "/progressChart" className="hover:underline">ProgressChart</Link>
         </nav>
 

@@ -10,20 +10,6 @@ const WorkoutLog = () => {
     const { addWorkout } = useContext(WorkoutContext);
 
 
-
-    useEffect(() => {
-        const fetchWorkouts = async () => {
-            try {
-                const response = await fetch('https://wger.de/api/v2/exercise/');
-                const data = await response.json();
-                setWorkouts(data.results.slice(0, 5));
-            } catch (error) {
-                console.error('Error fetching workouts:', error);
-
-            }
-            };
-            fetchWorkouts();
-        }, []);
         
 
         const handleChange = (event) => {
@@ -44,15 +30,15 @@ const WorkoutLog = () => {
 
         <div className="w-4/5 bg-gray-100 p-8">
             <header>
-            <h1 className="text-2xl font-bold text-green-700 mb-4">Welcome to Your Fitness Journey!</h1>
-            <p className="text-gray-700 mb-6">Track your workouts and progress effortlessly and effectively.</p>
-            <p>Today's Date: {date}</p>
+            <h1 className="text-2xl font-bold text-green-700 mb-4 text-center">Welcome to Your Fitness Journey!</h1>
+            <p className="text-gray-700 mb-4">Track your workouts and progress effortlessly and effectively.</p>
+            <p className="font-medium">Today's Date: {date}</p>
 
             </header>
 
             <section>
-            <h2>Log Your Workouts</h2>  
-            <form onSubmit={handleFormSubmit} className="bg-white shadow-md p-6 rounded space-y-4">
+            <h2 className="font-semibold text-center mb-4">Log Your Workouts</h2>  
+            <form onSubmit={handleFormSubmit} className="bg-white shadow-md p-6 rounded space-y-4 mb-6">
                 <label>Workout Name</label>
                 <input
                  type="text"
@@ -94,7 +80,7 @@ const WorkoutLog = () => {
             </section>
 
             <section>
-                <h2>Your Workout for Today.</h2>
+                <h2 className="font-bold">Your Workout for Today.</h2>
                 {dailyWorkout ? (
                     <div>
                         <p><strong>Name:</strong> {dailyWorkout.name}</p>
@@ -106,16 +92,7 @@ const WorkoutLog = () => {
                 )}
             </section>
 
-            <section>
-                <h2>Best Picks for You!</h2>
-                <ul>
-                    {workouts.map((workout) => (
-                        <li key={workout.id} onClick={() => alert(workout.description || 'Description not available.')}>
-                            {workout.name}
-                        </li>
-                    ))}
-                </ul>
-            </section>
+         
 
       
         </div>
